@@ -3,7 +3,7 @@
     <div class="pull-left">
       <div class="media-left">
         <img
-          [src]="contact?.imageUrl "
+          [src]="contact?.imageUrl"
           [alt]=""
           class=""
           style="height: 120px;  object-fit: cover"
@@ -12,10 +12,10 @@
     </div>
     <div class="pull-right btn-toolbar">
         <div class="btn-group">
-      <a class="btn btn-primary" href="#">Edit</a>
+      <a class="btn btn-primary" routerLink="edit">Edit</a>
       </div>
       <div class="btn-group">
-      <a class="btn btn-danger" href="#" style="margin-left: 5px;">Delete</a>
+      <a class="btn btn-danger" (click)="onDelete()" style="margin-left: 5px;">Delete</a>
       </div>
     </div>
   </div>
