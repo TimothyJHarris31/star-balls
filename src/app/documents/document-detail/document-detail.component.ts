@@ -11,6 +11,7 @@ import { WindRefService } from '../../win-ref.service';
   templateUrl: './document-detail.component.html',
   styleUrl: './document-detail.component.css',
 })
+
 export class DocumentDetailComponent implements OnInit {
   document: Document | null = null;
   id: string;
@@ -37,4 +38,10 @@ export class DocumentDetailComponent implements OnInit {
       this.nativeWindow.open(this.document.url);
     }
   }
+
+  onDelete() {
+    this.documentService.deleteDocument(this.document!);
+    this.router.navigate(['/documents']); 
+  }
+
 }
