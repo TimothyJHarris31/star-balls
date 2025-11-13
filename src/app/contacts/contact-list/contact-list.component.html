@@ -1,16 +1,47 @@
-<div class="row">
+<div class="row" style="margin-left: 20px">
   <div class="col-xs-12">
-    <div class="panel panel-default" style="margin-left: 20px">
-      <div class="panel-heading clearfix">
-        <h3 class="panel-title pull-left" style="margin-left: 20px; font-size: 32px;">Contacts</h3>
-        <a class="btn btn-success pull-right" routerLink="new">New Contact</a>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+
+        <!-- Title -->
+        <div class="row">
+          <span class="title pad-left-right" style="font-size: 25px; margin-left: 20px;">Contacts</span>
+        </div>
+
+        <!-- Search + New Contact button aligned on same row -->
+        <div class="row" style="display: flex; align-items: center;">
+          
+          <!-- Search box -->
+          <div class="input-group col-xs-7 pad-left-right" style="margin-left: 20px;">
+            <input
+              #searchBox
+              class="form-control"
+              placeholder="Enter a search value"
+              (keyup)="search(searchBox.value)"
+            />
+            <div
+              class="glyphicon glyphicon-search input-group-addon"
+              (click)="search(searchBox.value)"
+            ></div>
+          </div>
+
+          <!-- New Contact button -->
+          <div class="pad-left-right" style="margin-left: auto; margin-right: 20px;">
+            <a class="btn btn-success" [routerLink]="['new']">New Contact</a>
+          </div>
+
+        </div>
+
       </div>
+
+      <!-- Contacts list -->
       <div class="panel-body">
-    <cms-contact-item
-       *ngFor="let contactElement of contacts"
-       [contact]="contactElement"
-    ></cms-contact-item>
+        <cms-contact-item
+          *ngFor="let contactElement of contacts | contactsFilter: term"
+          [contact]="contactElement"
+        ></cms-contact-item>
       </div>
+
     </div>
   </div>
 </div>
