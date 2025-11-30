@@ -35,7 +35,7 @@ router.post('/', async (req, res, next) => {
 
     res.status(201).json({
       message: 'Message added successfully',
-      messageId: savedMessage._id
+      messageObj: savedMessage
     });
 
   } catch (error) {

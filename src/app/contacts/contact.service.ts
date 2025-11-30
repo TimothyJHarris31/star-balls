@@ -187,18 +187,17 @@ export class ContactService {
 
   // delete contact from the contacts list
   deleteContact(contact: Contact) {
-  if (!contact) {
-    return;
-  }
+    if (!contact) {
+      return;
+    }
 
-  const pos = this.contacts.findIndex(c => c.id === contact.id);
+    const pos = this.contacts.findIndex((c) => c.id === contact.id);
 
-  if (pos < 0) {
-    return;
-  }
+    if (pos < 0) {
+      return;
+    }
 
-  this.http.delete('http://localhost:3000/contacts/' + contact.id)
-    .subscribe({
+    this.http.delete('http://localhost:3000/contacts/' + contact.id).subscribe({
       next: () => {
         this.contacts.splice(pos, 1);
 
@@ -213,8 +212,7 @@ export class ContactService {
 
       error: (error) => {
         console.error('Error deleting contact:', error);
-      }
+      },
     });
-}
-
+  }
 }

@@ -10,10 +10,8 @@ router.get('/', async (req, res, next) => {
   try {
     const contacts = await Contact.find().populate('group').exec();
 
-    res.status(200).json({
-      message: "Contacts fetched successfully",
-      contacts: contacts
-    });
+    // RETURN JUST THE ARRAY
+    res.status(200).json(contacts);
 
   } catch (error) {
     res.status(500).json({
@@ -22,6 +20,7 @@ router.get('/', async (req, res, next) => {
     });
   }
 });
+
 
 
 // POST: create a new contact
